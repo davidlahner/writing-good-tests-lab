@@ -1,0 +1,10 @@
+dependencies {
+	compile("org.junit.jupiter:junit-jupiter-api")
+
+	compile 'org.hibernate:hibernate-core:5.2.10.Final'
+	compile 'javax.xml.bind:jaxb-api:2.2.11'
+
+	testCompile 'org.junit.jupiter:junit-jupiter-migrationsupport'
+	
+	testCompile 'com.h2database:h2:1.4.196'
+}

@@ -1,0 +1,12 @@
+include 'basics',
+	'mockito',
+	'hamcrest',
+	'extensions-rules',
+	'testdata',
+	'organising-tests',
+	'design-for-testability',
+	'test-driven-development',
+	'code-coverage',
+	'test-doubles',
+	'legacy-code',
+	'junit5'

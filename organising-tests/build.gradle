@@ -1,0 +1,6 @@
+test {
+    useJUnitPlatform {
+        includeTags 'fast'
+        excludeTags 'slow'
+    }
+}
