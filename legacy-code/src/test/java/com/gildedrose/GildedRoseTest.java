@@ -34,7 +34,7 @@ class GildedRoseTest {
     }
 
     @Test
-    void agedBrie_QualityOne_QualityIncreasesToTwo() {
+    void agedBrie_QualityOne_QualityIncreasesByOne() {
         //arrange
         createTestee(GildedRose.AGED_BRIE, 5, 1);
         //act
@@ -65,6 +65,17 @@ class GildedRoseTest {
         //assert
         assertThat("sell in", testee.items[0].sellIn, is(equalTo(-2)));
         assertThat("quality", testee.items[0].quality, is(equalTo(24)));
+    }
+
+    @Test
+    void agedBrie_SellInInPast_QualityIncreasesByTwoButNotOver50() {
+        //arrange
+        createTestee(GildedRose.AGED_BRIE, -1, 49);
+        //act
+        testee.updateQuality();
+        //assert
+        assertThat("sell in", testee.items[0].sellIn, is(equalTo(-2)));
+        assertThat("quality", testee.items[0].quality, is(equalTo(50)));
     }
 
     @Test
@@ -112,6 +123,17 @@ class GildedRoseTest {
     }
 
     @Test
+    void backstagePasses_sellIn9_qualityIncreasesByTwoButNotOverFifty() {
+        //arrange
+        createTestee(GildedRose.BACKSTAGE_PASSES, 10, 49);
+        //act
+        testee.updateQuality();
+        //assert
+        assertThat("sell in", testee.items[0].sellIn, is(equalTo(9)));
+        assertThat("quality", testee.items[0].quality, is(equalTo(50)));
+    }
+
+    @Test
     void backstagePasses_sellIn5_qualityIncreasesByThree() {
         //arrange
         createTestee(GildedRose.BACKSTAGE_PASSES, 5, 22);
@@ -120,6 +142,17 @@ class GildedRoseTest {
         //assert
         assertThat("sell in", testee.items[0].sellIn, is(equalTo(4)));
         assertThat("quality", testee.items[0].quality, is(equalTo(25)));
+    }
+
+    @Test
+    void backstagePasses_sellIn5_qualityIncreasesByThreeButNotOverFifty() {
+        //arrange
+        createTestee(GildedRose.BACKSTAGE_PASSES, 5, 48);
+        //act
+        testee.updateQuality();
+        //assert
+        assertThat("sell in", testee.items[0].sellIn, is(equalTo(4)));
+        assertThat("quality", testee.items[0].quality, is(equalTo(50)));
     }
 
     @Test

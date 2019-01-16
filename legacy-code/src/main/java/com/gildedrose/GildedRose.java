@@ -1,8 +1,6 @@
 package com.gildedrose;
 
 class GildedRose {
-
-
     public enum Product {
         AGED_BRIE,
         SULFURAS_HAND_OF_RAGNAROS,
@@ -28,60 +26,64 @@ class GildedRose {
             if (product == Product.AGED_BRIE || product == Product.BACKSTAGE_PASSES) {
                 increaseQualityForAgedBrieAndBackstagePasses(item, product);
             } else {
-                if (item.quality > 0) {
-                    switch (product) {
-                        case OTHER_ITEM:
-                            item.quality = item.quality - 1;
-                            break;
-                        case CONJURED_ITEM:
-                            item.quality = item.quality - 2;
-                            break;
-                    }
-                }
+                decreaseQualityForOtherItems(item, product);
             }
 
-            if (product != Product.SULFURAS_HAND_OF_RAGNAROS) {
-                item.sellIn = item.sellIn - 1;
-            }
+            adjustSellIn(item, product);
 
-            if (item.sellIn < 0) {
-                switch (product) {
-                    case AGED_BRIE:
-                        if (item.quality < MAXIMUM_QUALITY) {
-                            item.quality = item.quality + 1;
-                        }
-                        break;
-                    case BACKSTAGE_PASSES:
-                        item.quality = 0;
-                        break;
-                    case SULFURAS_HAND_OF_RAGNAROS:
-                        //Quality doesn't change
-                        break;
-                    default:
-                        if (item.quality > 0) {
-                            item.quality = item.quality - 1;
-                        }
-                }
-            }
+            adjustQualityIfSellInIsInThePast(item, product);
         }
     }
 
     private void increaseQualityForAgedBrieAndBackstagePasses(Item item, Product product) {
-        if (item.quality < MAXIMUM_QUALITY) {
-            item.quality = item.quality + 1;
+        int qualityIncrease = 1;
 
-            if (product == Product.BACKSTAGE_PASSES) {
-                if (item.sellIn < 11) {
-                    if (item.quality < 50) {
-                        item.quality = item.quality + 1;
-                    }
-                }
+        if (product == Product.BACKSTAGE_PASSES) {
+            if (item.sellIn < 6) {
+                qualityIncrease = 3;
+            } else if (item.sellIn < 11) {
+                qualityIncrease = 2;
+            }
+        }
 
-                if (item.sellIn < 6) {
-                    if (item.quality < 50) {
-                        item.quality = item.quality + 1;
+        item.quality = Math.min(item.quality + qualityIncrease, MAXIMUM_QUALITY);
+    }
+
+    private void decreaseQualityForOtherItems(Item item, Product product) {
+        if (item.quality > 0) {
+            switch (product) {
+                case OTHER_ITEM:
+                    item.quality = item.quality - 1;
+                    break;
+                case CONJURED_ITEM:
+                    item.quality = item.quality - 2;
+                    break;
+            }
+        }
+    }
+
+    private void adjustSellIn(Item item, Product product) {
+        if (product != Product.SULFURAS_HAND_OF_RAGNAROS) {
+            item.sellIn = item.sellIn - 1;
+        }
+    }
+
+    private void adjustQualityIfSellInIsInThePast(Item item, Product product) {
+        if (item.sellIn < 0) {
+            switch (product) {
+                case AGED_BRIE:
+                    item.quality = Math.min(item.quality + 1, MAXIMUM_QUALITY);
+                    break;
+                case BACKSTAGE_PASSES:
+                    item.quality = 0;
+                    break;
+                case SULFURAS_HAND_OF_RAGNAROS:
+                    //Quality doesn't change
+                    break;
+                default:
+                    if (item.quality > 0) {
+                        item.quality = item.quality - 1;
                     }
-                }
             }
         }
     }
