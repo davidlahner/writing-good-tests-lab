@@ -29,7 +29,6 @@ class GoldenMasterTest {
 
     private static String runScenario(int days) {
         StringBuilder builder = new StringBuilder();
-        builder.append("OMGHAI!").append(LINE_SEPARATOR);
 
         Item[] items = new Item[]{
                 new Item("+5 Dexterity Vest", 10, 20), //

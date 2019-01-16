@@ -1,4 +1,3 @@
-OMGHAI!
 -------- day 0 --------
 name, sellIn, quality
 +5 Dexterity Vest, 10, 20
