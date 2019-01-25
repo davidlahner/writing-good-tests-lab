@@ -1,24 +1,21 @@
 package com.zuehlke.testing.rules.examples;
 
-import static org.hamcrest.Matchers.*;
-import static org.hamcrest.MatcherAssert.*;
-
-import org.junit.Rule;
-import org.junit.jupiter.api.Test;
-
 import com.zuehlke.testing.rules.Person;
 import com.zuehlke.testing.rules.PersonDao;
-import org.junit.jupiter.api.extension.RegisterExtension;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
 
+import static org.hamcrest.CoreMatchers.is;
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.Matchers.equalTo;
+
+@ExtendWith(PersonResourceExtension.class)
 class IntegrationTestWithExtension {
 
     private PersonDao dao = new PersonDao();
 
-    @RegisterExtension
-    private PersonResource personResource = new PersonResource();
-
     @Test
-    void find_withRule() {
+    void find_withRule(PersonResource personResource) {
         // arrange
         Person expected = personResource.createPerson("Smarty");
         // act
