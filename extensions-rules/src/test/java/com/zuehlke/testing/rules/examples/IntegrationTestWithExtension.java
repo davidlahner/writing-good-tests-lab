@@ -15,7 +15,7 @@ class IntegrationTestWithExtension {
     private PersonDao dao = new PersonDao();
 
     @Test
-    void find_withRule(PersonResource personResource) {
+    void find_withExtension(PersonResource personResource) {
         // arrange
         Person expected = personResource.createPerson("Smarty");
         // act
