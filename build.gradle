@@ -1,41 +1,41 @@
 ext.junit4Version = '4.12'
-ext.junit5Version = '5.3.2'
+ext.junit5Version = '5.4.1'
 
 subprojects {
-	apply plugin: "idea"
-	apply plugin: "eclipse"
+    apply plugin: "idea"
+    apply plugin: "eclipse"
 
-	apply plugin: "java"
+    apply plugin: "java"
 
-	repositories {
-		jcenter()
-	}
+    repositories {
+        jcenter()
+    }
 
-	test {
-		useJUnitPlatform()
+    test {
+        useJUnitPlatform()
 
-		testLogging {
-			events "passed", "skipped", "failed"
-		}
-	}
+        testLogging {
+            events "passed", "skipped", "failed"
+        }
+    }
 
-	dependencies {
-		//import a BOM to ensure that compatible versions of the JUnit 5 library are used
-		implementation platform("org.junit:junit-bom:${junit5Version}")
+    dependencies {
+        //import a BOM to ensure that compatible versions of the JUnit 5 library are used
+        implementation platform("org.junit:junit-bom:${junit5Version}")
 
-		// JUnit Jupiter API and TestEngine implementation
-		testImplementation("org.junit.jupiter:junit-jupiter-api")
-		testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine")
+        // JUnit Jupiter API and TestEngine implementation
+        testImplementation("org.junit.jupiter:junit-jupiter-api")
+        testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine")
 
-		// If you also want to support JUnit 3 and JUnit 4 tests
-		testImplementation("junit:junit:${junit4Version}")
-		testRuntimeOnly("org.junit.vintage:junit-vintage-engine")
+        // If you also want to support JUnit 3 and JUnit 4 tests
+        testImplementation("junit:junit:${junit4Version}")
+        testRuntimeOnly("org.junit.vintage:junit-vintage-engine")
 
-		//workaround because JUnit 4 is also a dependency. Without JUnit 4 use org.hamcrest:hamcrest:2.1
-		testImplementation 'org.hamcrest:hamcrest-core:2.1'
-	}
+        //workaround because JUnit 4 is also a dependency. Without JUnit 4 use org.hamcrest:hamcrest:2.1
+        testImplementation 'org.hamcrest:hamcrest-core:2.1'
+    }
 
-	sourceCompatibility = 1.8
-	targetCompatibility = 1.8
+    sourceCompatibility = 1.8
+    targetCompatibility = 1.8
 
 }

@@ -24,4 +24,3 @@ class IntegrationTestWithExtension {
         assertThat(result.getName(), is(equalTo(expected.getName())));
     }
 }
-
