@@ -18,7 +18,8 @@ class ExceptionThrowerTest {
     @Test
     void testThrowRuntimeException_illegalParameter_illegalArgumentMessage() {
         // act
-        RuntimeException exception = assertThrows(RuntimeException.class, () -> testee.throwRuntimeException(-1));
+        RuntimeException exception = assertThrows(RuntimeException.class,
+                () -> testee.throwRuntimeException(-1));
 
         //assert
         assertThat(exception.getMessage(), startsWith("Illegal argument"));
@@ -27,7 +28,8 @@ class ExceptionThrowerTest {
     @Test
     void testThrowRuntimeException_legalParameter_runtimeMessage() {
         // act
-        RuntimeException exception = assertThrows(RuntimeException.class, () -> testee.throwRuntimeException(1));
+        RuntimeException exception = assertThrows(RuntimeException.class,
+                () -> testee.throwRuntimeException(1));
 
         //assert
         assertThat(exception.getMessage(), is(equalTo("Runtime exception occurred")));
@@ -36,7 +38,8 @@ class ExceptionThrowerTest {
     @Test
     void testThrowExceptionWithCause_expectCauseType() throws Exception {
         // act
-        RuntimeException exception = assertThrows(RuntimeException.class, () -> testee.throwExceptionWithCause());
+        RuntimeException exception = assertThrows(RuntimeException.class,
+                () -> testee.throwExceptionWithCause());
 
         //assert
         assertThat(exception.getMessage(), is(equalTo("outer exception")));
@@ -46,7 +49,8 @@ class ExceptionThrowerTest {
     @Test
     void testThrowExceptionWithCause_expectCauseWithMessage() throws Exception {
         // act
-        RuntimeException exception = assertThrows(RuntimeException.class, () -> testee.throwExceptionWithCause());
+        RuntimeException exception = assertThrows(RuntimeException.class,
+                () -> testee.throwExceptionWithCause());
 
         //assert
         assertThat(exception.getMessage(), is(equalTo("outer exception")));
