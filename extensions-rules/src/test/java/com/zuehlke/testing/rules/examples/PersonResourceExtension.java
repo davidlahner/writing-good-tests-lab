@@ -10,7 +10,6 @@ public class PersonResourceExtension implements BeforeEachCallback, AfterEachCal
 
     private static final String PERSON_RESOURCE = "personResource";
     private Namespace namespace = Namespace.create("Zuehlke", "Testing", "Workshop");
-    ;
 
     @Override
     public void beforeEach(ExtensionContext context) throws Exception {
