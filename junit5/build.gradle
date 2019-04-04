@@ -1,3 +1,5 @@
 dependencies {
     testImplementation("org.junit.jupiter:junit-jupiter-params")
+    testImplementation("junit:junit:${junit4Version}")
+    testRuntimeOnly("org.junit.vintage:junit-vintage-engine")
 }
