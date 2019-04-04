@@ -16,8 +16,7 @@ public class Mailbox {
 
     @Deprecated
     public Mailbox(String userId) {
-        userRepository = UserRepository.getInstance();
-        mailServer = MailServer.getInstance();
+        this(new UserRepository(), new MailServer());
         retrieveMail(userId);
     }
 
@@ -46,10 +45,6 @@ public class Mailbox {
     }
 
     static class MailServer {
-        static MailServer getInstance() {
-            return new MailServer();
-        }
-
         List<Mail> getMail(User user) {
             return new ArrayList<>();
         }
@@ -69,10 +64,6 @@ public class Mailbox {
     }
 
     static class UserRepository {
-        static UserRepository getInstance() {
-            return new UserRepository();
-        }
-
         User getUser(String userId) {
             return null;
         }
