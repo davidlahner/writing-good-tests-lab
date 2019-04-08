@@ -16,14 +16,14 @@ import static org.mockito.AdditionalMatchers.lt;
 import static org.mockito.ArgumentMatchers.anyInt;
 import static org.mockito.Mockito.*;
 
-public class PersonServiceTest {
+class PersonServiceTest {
 
     private PersonDao mock = mock(PersonDao.class);
     private PersonService testee = new PersonService(mock);
 
     // Exercise RETURN-VALUE
     @Test
-    public void findById_existingId_personReturned() {
+    void findById_existingId_personReturned() {
         // arrange
         Person person = new Person(1, "Peter", "Meier", 21);
         when(mock.findById(1)).thenReturn(person);
@@ -38,7 +38,7 @@ public class PersonServiceTest {
 
     // Exercise RETURN-VALUE
     @Test
-    public void findById_queriedIdNotMocked_nullReturned() {
+    void findById_queriedIdNotMocked_nullReturned() {
         // arrange
         Person person = new Person(1, "Peter", "Meier", 21);
         when(mock.findById(1)).thenReturn(person);
@@ -51,9 +51,9 @@ public class PersonServiceTest {
         verify(mock).findById(2);
     }
 
-    // Exercise EXCEPTION
+    // Exercise EXCEPTION (easy)
     @Test
-    public void findById_negativeId_IllegalArgumentExceptionThrown() {
+    void findById_negativeId_IllegalArgumentExceptionThrown() {
         // arrange
         when(mock.findById(lt(0))).thenThrow(new IllegalArgumentException());
 
@@ -61,6 +61,7 @@ public class PersonServiceTest {
         assertThrows(IllegalArgumentException.class, () -> testee.findById(-1));
     }
 
+    // Exercise EXCEPTION (sophisticated)
     @Test
     void findById_negativeIdDynamic_IllegalArgumentExceptionThrown() {
         // arrange
@@ -78,7 +79,7 @@ public class PersonServiceTest {
 
     // Exercise METHOD-CALLED
     @Test
-    public void findAll_listOfPersonsReturned() {
+    void findAll_listOfPersonsReturned() {
         // arrange
         Person person1 = new Person(1, "Peter", "Meier", 21);
         Person person2 = new Person(2, "Gabi", "Müller", 35);
@@ -97,7 +98,7 @@ public class PersonServiceTest {
 
     // Exercise CALL-COUNT
     @Test
-    public void findById_multipleCalls_callCountVerfied() {
+    void findById_multipleCalls_callCountVerfied() {
         // Act
         testee.findById(11);
         testee.findAll();
