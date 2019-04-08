@@ -12,9 +12,9 @@ import org.junit.jupiter.api.Test;
  */
 public class RandomTest {
 
-	@SuperFast
-	//@Tag("superFast")
-	@Test
-	public void test() {
-	}
+    @SuperFast
+    //@Tag("SuperFast")
+    @Test
+    public void test() {
+    }
 }
