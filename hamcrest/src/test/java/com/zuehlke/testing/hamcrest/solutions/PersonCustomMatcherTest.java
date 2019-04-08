@@ -1,42 +1,50 @@
 package com.zuehlke.testing.hamcrest.solutions;
 
-import static org.hamcrest.MatcherAssert.*;
-import static org.hamcrest.Matchers.*;
-
+import com.zuehlke.testing.hamcrest.Person;
+import org.hamcrest.Description;
 import org.hamcrest.FeatureMatcher;
 import org.hamcrest.Matcher;
+import org.hamcrest.TypeSafeDiagnosingMatcher;
 import org.junit.jupiter.api.Test;
 
-import com.zuehlke.testing.hamcrest.Person;
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.Matchers.allOf;
+import static org.hamcrest.Matchers.equalTo;
 
-public class PersonCustomMatcherTest {
+class PersonCustomMatcherTest {
 
-	@Test
-	public void constructor_parametersGiven_initializedPerson() {
-		// act
-		Person result = new Person(1, "Peter", "Maler", 42);
+    @Test
+    void constructor_parametersGiven_initializedPerson() {
+        // act
+        Person result = new Person(1, "Peter", "Maler", 42);
 
-		// assert
-		assertThat(result, allOf(hasFirstName("Peter"), hasLastName("Maler")));
-	}
+        // assert
+        assertThat(result, allOf(hasFirstName("Peter"), hasLastName("Maler")));
+    }
 
-	private Matcher<Person> hasFirstName(String expected) {
-		return new FeatureMatcher<Person, String>(equalTo(expected), "firstName", "firstName") {
+    private Matcher<Person> hasFirstName(String expected) {
+        return new TypeSafeDiagnosingMatcher<Person>() {
 
-			@Override
-			protected String featureValueOf(Person actual) {
-				return actual.getFirstname();
-			}
-		};
-	}
+            @Override
+            public void describeTo(Description description) {
+                description.appendText("first name should be ").appendValue(expected);
+            }
 
-	private Matcher<Person> hasLastName(String expected) {
-		return new FeatureMatcher<Person, String>(equalTo(expected), "lastName", "lastName") {
+            @Override
+            protected boolean matchesSafely(Person item, Description mismatchDescription) {
+                mismatchDescription.appendText("was ").appendValue(item.getFirstname());
+                return expected.equals(item.getFirstname());
+            }
+        };
+    }
 
-			@Override
-			protected String featureValueOf(Person actual) {
-				return actual.getLastname();
-			}
-		};
-	}
+    private Matcher<Person> hasLastName(String expected) {
+        return new FeatureMatcher<Person, String>(equalTo(expected), "lastName", "lastName") {
+
+            @Override
+            protected String featureValueOf(Person actual) {
+                return actual.getLastname();
+            }
+        };
+    }
 }
