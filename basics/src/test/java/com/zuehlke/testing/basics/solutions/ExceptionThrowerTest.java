@@ -1,16 +1,14 @@
-package com.zuehlke.testing.rules.solutions;
+package com.zuehlke.testing.basics.solutions;
 
-import com.zuehlke.testing.rules.exercises.ExceptionThrower;
+import com.zuehlke.testing.basics.exercises.ExceptionThrower;
 import org.hamcrest.Description;
 import org.hamcrest.TypeSafeMatcher;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.extension.ExtendWith;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.*;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
-@ExtendWith(LogTestExecutionExtension.class)
 class ExceptionThrowerTest {
 
     private ExceptionThrower testee = new ExceptionThrower();
