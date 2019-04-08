@@ -12,6 +12,7 @@ import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.MatcherAssert.assertThat;
 
 class GoldenMasterTest {
+
     private static final String LINE_SEPARATOR = "\n";
 
     @Test

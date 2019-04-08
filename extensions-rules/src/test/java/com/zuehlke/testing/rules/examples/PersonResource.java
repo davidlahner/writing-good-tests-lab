@@ -1,6 +1,5 @@
 package com.zuehlke.testing.rules.examples;
 
-
 import com.zuehlke.testing.rules.Person;
 import com.zuehlke.testing.rules.PersonDao;
 
