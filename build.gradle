@@ -1,5 +1,5 @@
 ext.junit4Version = '4.12'
-ext.junit5Version = '5.4.2'
+ext.junit5Version = '5.5.0-RC1'
 
 subprojects {
     apply plugin: "idea"
@@ -24,8 +24,7 @@ subprojects {
         implementation platform("org.junit:junit-bom:${junit5Version}")
 
         // JUnit Jupiter API and TestEngine implementation
-        testImplementation("org.junit.jupiter:junit-jupiter-api")
-        testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine")
+        testImplementation("org.junit.jupiter:junit-jupiter")
 
         // If you also want to support JUnit 3 and JUnit 4 tests
         //testImplementation("junit:junit:${junit4Version}")
