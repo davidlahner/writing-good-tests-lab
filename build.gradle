@@ -1,5 +1,5 @@
 ext.junit4Version = '4.12'
-ext.junit5Version = '5.5.0-RC1'
+ext.junit5Version = '5.5.2'
 
 subprojects {
     apply plugin: "idea"
