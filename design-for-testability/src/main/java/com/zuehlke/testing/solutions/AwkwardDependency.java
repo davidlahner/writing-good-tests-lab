@@ -6,62 +6,54 @@ import java.util.List;
 
 public class AwkwardDependency {
 
-	// Context: A voicemail system for multiple users, recording messages on calls
-	// to absent users
+    // Context: A voicemail system for multiple users, recording messages on calls
+    // to absent users
 
-	private final UserRepository repository;
-	private final Voicemail voicemail;
+    private final UserRepository repository;
+    private final Voicemail voicemail;
 
-	public AwkwardDependency(UserRepository repository, Voicemail voicemail) {
-		this.repository = repository;
-		this.voicemail = voicemail;
-	}
+    public AwkwardDependency(UserRepository repository, Voicemail voicemail) {
+        this.repository = repository;
+        this.voicemail = voicemail;
+    }
 
-	@Deprecated
-	public AwkwardDependency() {
-		this.repository = UserRepository.instance();
-		this.voicemail = Voicemail.instance();
-	}
+    @Deprecated
+    public AwkwardDependency() {
+        this.repository = new UserRepository();
+        this.voicemail = new Voicemail();
+    }
 
-	public Duration getDurationOfAllMessagesFor(int userId) {
-		User user = repository.getUser(userId);
-		List<Call> calls = voicemail.getCallsFor(user);
-		Duration sum = Duration.ZERO;
-		for (Call call : calls) {
-			sum = sum.plus(call.getDuration());
-		}
-		return sum;
-	}
+    public Duration getDurationOfAllMessagesFor(int userId) {
+        User user = repository.getUser(userId);
+        List<Call> calls = voicemail.getCallsFor(user);
+        Duration sum = Duration.ZERO;
+        for (Call call : calls) {
+            sum = sum.plus(call.getDuration());
+        }
+        return sum;
+    }
 
-	// --- dependencies, out of scope of the example ---
+    // --- dependencies, out of scope of the example ---
 
-	class User {
-	}
+    class User {
+    }
 
-	class Call {
-		public Duration getDuration() {
-			return null;
-		}
-	}
+    class Call {
+        public Duration getDuration() {
+            return null;
+        }
+    }
 
-	static class UserRepository {
-		static UserRepository instance() {
-			return null;
-		}
+    static class UserRepository {
+        User getUser(int userId) {
+            return null;
+        }
+    }
 
-		User getUser(int userId) {
-			return null;
-		}
-	}
-
-	static class Voicemail {
-		static Voicemail instance() {
-			return null;
-		}
-
-		List<Call> getCallsFor(User user) {
-			return Collections.emptyList();
-		}
-	}
+    static class Voicemail {
+        List<Call> getCallsFor(User user) {
+            return Collections.emptyList();
+        }
+    }
 
 }
