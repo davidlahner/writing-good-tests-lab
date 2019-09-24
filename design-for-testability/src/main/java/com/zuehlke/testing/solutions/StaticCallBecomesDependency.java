@@ -17,7 +17,7 @@ public class StaticCallBecomesDependency {
 
     @Deprecated
     public StaticCallBecomesDependency() {
-        this.voicemail = Voicemail.instance();
+        this.voicemail = new Voicemail();
     }
 
     // Alternative 1: Voicemail is dependency of this class
@@ -52,13 +52,8 @@ public class StaticCallBecomesDependency {
     }
 
     static class Voicemail {
-        static Voicemail instance() {
-            return new Voicemail();
-        }
-
         List<Call> getCallsFor(User user) {
             return Collections.emptyList();
         }
     }
-
 }
