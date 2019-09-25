@@ -1,12 +1,19 @@
 package com.zuehlke.testing.junit5.solutions;
 
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.Timeout;
 
 import java.time.Duration;
 
 import static org.junit.jupiter.api.Assertions.assertTimeout;
 
 class TimeoutTest {
+
+    @Timeout(value = 1)
+    @Test
+    void testTimeoutAnnotation() throws InterruptedException {
+        Thread.sleep(1002);
+    }
 
     @Test
     void testTimeout() {
