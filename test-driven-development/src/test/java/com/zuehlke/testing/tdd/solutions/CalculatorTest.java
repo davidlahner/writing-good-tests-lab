@@ -1,6 +1,8 @@
 package com.zuehlke.testing.tdd.solutions;
 
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
 
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.CoreMatchers.is;
@@ -35,16 +37,16 @@ class CalculatorTest {
     }
 
     @Test
-    void testCalculate_threeNumbers_sum() {
+    void testCalculate_threeNumbers_throwsException() {
         // act
-        int sum = testee.calculate("1,2,5");
-        // assert
-        assertThat(sum, is(equalTo(8)));
+        assertThrows(IllegalArgumentException.class,
+                () -> testee.calculate("1,2,5"));
     }
 
-    @Test
-    void testCalculate_fourNumbers_exception() {
-        // act
-        assertThrows(IllegalArgumentException.class, () -> testee.calculate("1,2,5,6"));
+    @ParameterizedTest
+    @CsvSource({"'',0", "1,1", "'1,2',3"})
+    void testCalculate(String input, int expected) {
+        int sum = testee.calculate(input);
+        assertThat(sum, is(equalTo(expected)));
     }
 }
