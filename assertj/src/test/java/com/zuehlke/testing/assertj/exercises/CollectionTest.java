@@ -28,8 +28,8 @@ public class CollectionTest {
 
         // assert
         // 1. assert fritz is present
-        // 2. assert new Person("Fritz", "Meier", 5) is present
-        // 3. assert peter, fritz are in the list
-        // 4. assert fritz, peter are in the list
+        // 2. assert peter, fritz are in the list
+        // 3. assert fritz, peter are in the list
+        // 4. assert first and last name of the persons in the list.
     }
 }
