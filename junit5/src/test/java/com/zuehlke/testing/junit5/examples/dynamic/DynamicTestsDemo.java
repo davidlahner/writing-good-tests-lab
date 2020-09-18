@@ -21,7 +21,7 @@ class DynamicTestsDemo {
     @TestFactory
     @Disabled
     List<String> dynamicTestsWithInvalidReturnType() {
-        return Arrays.asList("Hello");
+        return Collections.singletonList("Hello");
     }
 
     @TestFactory
@@ -58,7 +58,7 @@ class DynamicTestsDemo {
     Stream<DynamicTest> dynamicTestsFromIntStream() {
         // Generates tests for the first 10 even integers.
         return IntStream.iterate(0, n -> n + 2).limit(10)
-                .mapToObj(n -> dynamicTest("test" + n, () -> assertTrue(n % 2 == 0)));
+                .mapToObj(n -> dynamicTest("test" + n, () -> assertEquals(n % 2, 0)));
     }
 
     @TestFactory
@@ -66,9 +66,9 @@ class DynamicTestsDemo {
 
         // Generates random positive integers between 0 and 100 until
         // a number evenly divisible by 7 is encountered.
-        Iterator<Integer> inputGenerator = new Iterator<Integer>() {
+        Iterator<Integer> inputGenerator = new Iterator<>() {
 
-            Random random = new Random();
+            final Random random = new Random();
             int current;
 
             @Override
@@ -93,6 +93,7 @@ class DynamicTestsDemo {
         return DynamicTest.stream(inputGenerator, displayNameGenerator, testExecutor);
     }
 
+    @SuppressWarnings("ConstantConditions")
     @TestFactory
     Stream<DynamicNode> dynamicTestsWithContainers() {
         return Stream.of("A", "B", "C")
