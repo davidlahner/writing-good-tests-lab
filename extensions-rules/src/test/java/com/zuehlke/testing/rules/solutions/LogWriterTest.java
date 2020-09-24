@@ -9,12 +9,11 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 
-import static org.hamcrest.MatcherAssert.assertThat;
-import static org.hamcrest.Matchers.containsString;
+import static org.assertj.core.api.Assertions.assertThat;
 
 class LogWriterTest {
 
-    private LogWriter testee = new LogWriter();
+    private final LogWriter testee = new LogWriter();
 
     @Test
     void log(@TempDir Path tempDir) throws IOException {
@@ -24,7 +23,7 @@ class LogWriterTest {
         // act
         testee.log(logFile, "Hello Log");
         // assert
-        String result = new String(Files.readAllBytes(logFile.toPath()));
-        assertThat(result, containsString("Hello Log"));
+        String result = Files.readString(logFile.toPath());
+        assertThat(result).contains("Hello Log");
     }
 }
