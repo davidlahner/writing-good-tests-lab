@@ -1,4 +1,4 @@
-package com.gildedrose;
+package com.gildedrose.solutions;
 
 class GildedRose {
     Item[] items;

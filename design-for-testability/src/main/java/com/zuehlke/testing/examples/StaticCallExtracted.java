@@ -4,24 +4,24 @@ import java.time.Duration;
 
 public class StaticCallExtracted {
 
-	// Context: A voicemail system for multiple users, recording messages on calls
-	// to absent users
+    // Context: A voicemail system for multiple users, recording messages on calls
+    // to absent users
 
-	class Call {
+    class Call {
 
-		private Duration duration;
+        private Duration duration;
 
-		public Duration getDuration() {
-			return duration;
-		}
+        public Duration getDuration() {
+            return duration;
+        }
 
-		public void recordMessage() {
-			long startRecording = System.currentTimeMillis();
-			// .. actual recording of the message
-			long millis = System.currentTimeMillis() - startRecording;
-			this.duration = Duration.ofMillis(millis);
-		}
+        public void recordMessage() {
+            long startRecording = System.currentTimeMillis();
+            // .. actual recording of the message
+            long millis = System.currentTimeMillis() - startRecording;
+            this.duration = Duration.ofMillis(millis);
+        }
 
-	}
+    }
 
 }
