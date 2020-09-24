@@ -4,7 +4,10 @@ import com.zuehlke.testing.mocking.person.Person;
 import com.zuehlke.testing.mocking.person.PersonDao;
 import com.zuehlke.testing.mocking.person.PersonService;
 import org.hamcrest.Matchers;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.mockito.Mock;
+import org.mockito.MockitoAnnotations;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -18,8 +21,15 @@ import static org.mockito.Mockito.*;
 
 class PersonServiceTest {
 
-    private PersonDao mock = mock(PersonDao.class);
-    private PersonService testee = new PersonService(mock);
+    @Mock
+    private PersonDao mock;
+    private PersonService testee;
+
+    @BeforeEach
+    void initMocks() {
+        MockitoAnnotations.openMocks(this);
+        testee = new PersonService(mock);
+    }
 
     // Exercise RETURN-VALUE
     @Test
