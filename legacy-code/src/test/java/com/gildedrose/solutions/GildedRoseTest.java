@@ -1,5 +1,6 @@
-package com.gildedrose;
+package com.gildedrose.solutions;
 
+import com.gildedrose.Item;
 import org.junit.jupiter.api.Test;
 
 import static org.hamcrest.CoreMatchers.equalTo;

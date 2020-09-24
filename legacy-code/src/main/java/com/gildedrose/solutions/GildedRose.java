@@ -1,4 +1,6 @@
-package com.gildedrose;
+package com.gildedrose.solutions;
+
+import com.gildedrose.Item;
 
 class GildedRose {
     public enum Product {
