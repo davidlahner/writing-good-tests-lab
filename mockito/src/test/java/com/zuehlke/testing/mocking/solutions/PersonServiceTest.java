@@ -36,7 +36,7 @@ class PersonServiceTest {
     void findById_existingId_personReturned() {
         // arrange
         Person person = new Person(1, "Peter", "Meier", 21);
-        when(mock.findById(1)).thenReturn(person);
+        when(mock.findById(anyInt())).thenReturn(person);
 
         // act
         Person result = testee.findById(1);
@@ -108,7 +108,7 @@ class PersonServiceTest {
 
     // Exercise CALL-COUNT
     @Test
-    void findById_multipleCalls_callCountVerfied() {
+    void findById_multipleCalls_callCountVerified() {
         // Act
         testee.findById(11);
         testee.findAll();
