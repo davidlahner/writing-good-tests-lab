@@ -6,6 +6,7 @@ import org.junit.jupiter.api.Test;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.equalTo;
 import static org.hamcrest.Matchers.is;
+import static org.junit.Assert.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
 public class ExceptionHandlingExample {
@@ -22,7 +23,7 @@ public class ExceptionHandlingExample {
             // don't forget to fail if no exception is thrown
             Assert.fail("expected an exception");
         } catch (IllegalArgumentException ex) {
-            assertThat("message", ex.getMessage(), is(equalTo("Name must not be null")));
+            assertEquals("message", "Name must not be null", ex.getMessage());
         }
     }
 

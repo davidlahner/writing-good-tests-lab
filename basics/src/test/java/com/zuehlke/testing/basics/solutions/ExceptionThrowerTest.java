@@ -1,12 +1,10 @@
 package com.zuehlke.testing.basics.solutions;
 
 import com.zuehlke.testing.basics.exercises.ExceptionThrower;
-import org.hamcrest.Description;
-import org.hamcrest.TypeSafeMatcher;
+import org.assertj.core.api.Condition;
 import org.junit.jupiter.api.Test;
 
-import static org.hamcrest.MatcherAssert.assertThat;
-import static org.hamcrest.Matchers.*;
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
 class ExceptionThrowerTest {
@@ -20,7 +18,7 @@ class ExceptionThrowerTest {
                 () -> testee.throwRuntimeException(-1));
 
         //assert
-        assertThat(exception.getMessage(), startsWith("Illegal argument"));
+        assertThat(exception.getMessage()).startsWith("Illegal argument");
     }
 
     @Test
@@ -30,7 +28,7 @@ class ExceptionThrowerTest {
                 () -> testee.throwRuntimeException(1));
 
         //assert
-        assertThat(exception.getMessage(), is(equalTo("Runtime exception occurred")));
+        assertThat(exception.getMessage()).isEqualTo("Runtime exception occurred");
     }
 
     @Test
@@ -40,8 +38,8 @@ class ExceptionThrowerTest {
                 testee::throwExceptionWithCause);
 
         //assert
-        assertThat(exception.getMessage(), is(equalTo("outer exception")));
-        assertThat(exception.getCause(), instanceOf(NullPointerException.class));
+        assertThat(exception.getMessage()).isEqualTo("outer exception");
+        assertThat(exception.getCause()).isInstanceOf(NullPointerException.class);
     }
 
     @Test
@@ -51,35 +49,19 @@ class ExceptionThrowerTest {
                 testee::throwExceptionWithCause);
 
         //assert
-        assertThat(exception.getMessage(), is(equalTo("outer exception")));
-        assertThat(exception.getCause(), CauseMatcher.matchesCause(NullPointerException.class,
-                "Oops! Something wasn't supposed to be null here."));
+        assertThat(exception.getMessage()).isEqualTo("outer exception");
+        assertThat(exception.getCause())
+                .is(matchingType(NullPointerException.class))
+                .is(matchingMessage("Oops! Something wasn't supposed to be null here."));
     }
 
-    private static class CauseMatcher extends TypeSafeMatcher<Throwable> {
-
-        private final Class<? extends Throwable> type;
-        private final String expectedMessage;
-
-        private CauseMatcher(Class<? extends Throwable> type, String expectedMessage) {
-            this.type = type;
-            this.expectedMessage = expectedMessage;
-        }
-
-        @Override
-        protected boolean matchesSafely(Throwable item) {
-            return item.getClass().isAssignableFrom(type) && item.getMessage().contains(expectedMessage);
-        }
-
-        @Override
-        public void describeTo(Description description) {
-            description.appendText("expects type ").appendValue(type).appendText(" and a message ")
-                    .appendValue(expectedMessage);
-        }
-
-        public static CauseMatcher matchesCause(Class<? extends Throwable> type, String expectedMessage) {
-            return new CauseMatcher(type, expectedMessage);
-        }
+    private Condition<Throwable> matchingType(Class<? extends Throwable> expectedType) {
+        return new Condition<>((Throwable thrown) -> expectedType.isAssignableFrom(thrown.getClass()),
+                "exception of type %s", expectedType);
     }
 
+    private Condition<Throwable> matchingMessage(String expectedMessage) {
+        return new Condition<>((Throwable thrown) -> expectedMessage.equals(thrown.getMessage()),
+                "exception with message %s", expectedMessage);
+    }
 }

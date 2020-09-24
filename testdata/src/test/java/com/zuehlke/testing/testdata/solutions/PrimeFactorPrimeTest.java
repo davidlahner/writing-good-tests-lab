@@ -9,8 +9,7 @@ import org.junit.jupiter.params.provider.MethodSource;
 
 import java.util.stream.Stream;
 
-import static org.hamcrest.CoreMatchers.is;
-import static org.hamcrest.MatcherAssert.assertThat;
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.params.provider.Arguments.arguments;
 
 class PrimeFactorPrimeTest {
@@ -23,7 +22,7 @@ class PrimeFactorPrimeTest {
         // act
         boolean result = PrimeFactor.isPrime(number);
         // assert
-        assertThat(result, is(primeExpected));
+        assertThat(result).isEqualTo(primeExpected);
     }
 
     @DisplayName("is Prime with MethodSource")
@@ -33,7 +32,7 @@ class PrimeFactorPrimeTest {
         // act
         boolean result = PrimeFactor.isPrime(number);
         // assert
-        assertThat(result, is(primeExpected));
+        assertThat(result).isEqualTo(primeExpected);
     }
 
     static Stream<Arguments> argumentsProvider() {

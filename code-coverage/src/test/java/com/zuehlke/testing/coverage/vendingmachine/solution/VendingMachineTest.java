@@ -4,9 +4,7 @@ import com.zuehlke.testing.coverage.vendingmachine.NoMoreChangeException;
 import com.zuehlke.testing.coverage.vendingmachine.NotEnoughMoneyException;
 import org.junit.jupiter.api.Test;
 
-import static org.hamcrest.MatcherAssert.assertThat;
-import static org.hamcrest.Matchers.equalTo;
-import static org.hamcrest.Matchers.is;
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
 class VendingMachineTest {
@@ -20,7 +18,7 @@ class VendingMachineTest {
         NotEnoughMoneyException exception = assertThrows(NotEnoughMoneyException.class, () -> testee.calculateChange(1, 4));
 
         //assert
-        assertThat(exception.getMessage(), is(equalTo("Not enough money: Paid: 4, required: 5")));
+        assertThat(exception).hasMessage("Not enough money: Paid: 4, required: 5");
     }
 
     //No Change returned
@@ -32,7 +30,7 @@ class VendingMachineTest {
         // act
         int change = testee.calculateChange(1, 5);
         // assert
-        assertThat(change, is(equalTo(0)));
+        assertThat(change).isEqualTo(0);
     }
 
     //Some Change returned
@@ -44,7 +42,7 @@ class VendingMachineTest {
         // act
         int change = testee.calculateChange(1, 6);
         // assert
-        assertThat(change, is(equalTo(1)));
+        assertThat(change).isEqualTo(1);
     }
 
     @Test
@@ -55,8 +53,7 @@ class VendingMachineTest {
         NoMoreChangeException exception = assertThrows(NoMoreChangeException.class,
                 () -> testee.calculateChange(1, 7));
         //assert
-        assertThat(exception.getMessage(),
-                is(equalTo("No More Change: Vending machine ran out of 1CHF coins")));
+        assertThat(exception).hasMessage("No More Change: Vending machine ran out of 1CHF coins");
     }
 
     @Test
@@ -70,7 +67,7 @@ class VendingMachineTest {
         int change = testee.calculateChange(2, 0);
 
         // assert
-        assertThat(change, is(equalTo(0)));
+        assertThat(change).isEqualTo(0);
     }
 
     @Test
@@ -84,7 +81,7 @@ class VendingMachineTest {
         int change = testee.calculateChange(2, 2);
 
         // assert
-        assertThat(change, is(equalTo(0)));
+        assertThat(change).isEqualTo(0);
     }
 
     @Test
@@ -97,7 +94,7 @@ class VendingMachineTest {
         NotEnoughMoneyException exception = assertThrows(NotEnoughMoneyException.class, () -> testee.calculateChange(2, 0));
 
         //assert
-        assertThat(exception.getMessage(), is(equalTo("Not enough money: Paid: 0, required: 10")));
+        assertThat(exception).hasMessage("Not enough money: Paid: 0, required: 10");
     }
 
 }

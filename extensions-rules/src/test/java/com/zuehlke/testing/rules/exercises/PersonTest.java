@@ -3,8 +3,7 @@ package com.zuehlke.testing.rules.exercises;
 import com.zuehlke.testing.rules.Person;
 import org.junit.jupiter.api.Test;
 
-import static org.hamcrest.MatcherAssert.assertThat;
-import static org.hamcrest.Matchers.*;
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
 class PersonTest {
@@ -15,8 +14,8 @@ class PersonTest {
         Person result = new Person("Peter");
 
         // assert
-        assertThat(result, is(notNullValue()));
-        assertThat("name", result.getName(), is(equalTo("Peter")));
+        assertThat(result).isNotNull();
+        assertThat(result.getName()).as("name").isEqualTo("Peter");
     }
 
     @Test
@@ -25,8 +24,8 @@ class PersonTest {
         Person result = new Person("");
 
         // assert
-        assertThat(result, is(notNullValue()));
-        assertThat("name", result.getName(), is(emptyString()));
+        assertThat(result).isNotNull();
+        assertThat(result.getName()).isEmpty();
     }
 
     @Test
@@ -34,5 +33,4 @@ class PersonTest {
         // act & assert
         assertThrows(IllegalArgumentException.class, () -> new Person(null));
     }
-
 }

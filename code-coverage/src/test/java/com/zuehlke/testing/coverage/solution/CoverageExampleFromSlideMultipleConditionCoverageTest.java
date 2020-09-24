@@ -5,8 +5,7 @@ import org.junit.jupiter.api.Test;
 
 import java.time.LocalTime;
 
-import static org.hamcrest.MatcherAssert.assertThat;
-import static org.hamcrest.Matchers.is;
+import static org.assertj.core.api.Assertions.assertThat;
 
 class CoverageExampleFromSlideMultipleConditionCoverageTest {
 
@@ -18,7 +17,7 @@ class CoverageExampleFromSlideMultipleConditionCoverageTest {
         boolean result = testee.isShopOpen(LocalTime.of(9, 00), true);
 
         // assert
-        assertThat(result, is(true));
+        assertThat(result).isTrue();
     }
 
     @Test
@@ -27,7 +26,7 @@ class CoverageExampleFromSlideMultipleConditionCoverageTest {
         boolean result = testee.isShopOpen(LocalTime.of(8, 00), false);
 
         // assert
-        assertThat(result, is(false));
+        assertThat(result).isFalse();
     }
 
     @Test
@@ -36,7 +35,7 @@ class CoverageExampleFromSlideMultipleConditionCoverageTest {
         boolean result = testee.isShopOpen(LocalTime.of(8, 00), true);
 
         // assert
-        assertThat(result, is(true));
+        assertThat(result).isTrue();
     }
 
     @Test
@@ -45,6 +44,6 @@ class CoverageExampleFromSlideMultipleConditionCoverageTest {
         boolean result = testee.isShopOpen(LocalTime.of(19, 00), false);
 
         // assert
-        assertThat(result, is(false));
+        assertThat(result).isFalse();
     }
 }

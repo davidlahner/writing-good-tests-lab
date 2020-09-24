@@ -7,9 +7,7 @@ import java.net.URISyntaxException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 
-import static org.hamcrest.CoreMatchers.equalTo;
-import static org.hamcrest.CoreMatchers.is;
-import static org.hamcrest.MatcherAssert.assertThat;
+import static org.assertj.core.api.Assertions.assertThat;
 
 class GoldenMasterTest {
 
@@ -20,8 +18,8 @@ class GoldenMasterTest {
         //act
         String result = runScenario(31);
         //assert
-        String expected = new String(Files.readAllBytes(Paths.get(ClassLoader.getSystemResource("GoldenMaster.txt").toURI())));
-        assertThat(result, is(equalTo(expected)));
+        String expected = Files.readString(Paths.get(ClassLoader.getSystemResource("GoldenMaster.txt").toURI()));
+        assertThat(result).isEqualTo(expected);
     }
 
     public static void main(String[] args) {

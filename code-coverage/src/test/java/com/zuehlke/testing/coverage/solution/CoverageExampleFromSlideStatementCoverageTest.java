@@ -1,25 +1,23 @@
 package com.zuehlke.testing.coverage.solution;
 
-import static org.hamcrest.Matchers.*;
-import static org.hamcrest.MatcherAssert.*;
+import com.zuehlke.testing.coverage.example.CoverageExampleFromSlide;
+import org.junit.jupiter.api.Test;
 
 import java.time.LocalTime;
 
-import org.junit.jupiter.api.Test;
-
-import com.zuehlke.testing.coverage.example.CoverageExampleFromSlide;
+import static org.assertj.core.api.Assertions.assertThat;
 
 class CoverageExampleFromSlideStatementCoverageTest {
 
-	private CoverageExampleFromSlide testee = new CoverageExampleFromSlide();
+    private CoverageExampleFromSlide testee = new CoverageExampleFromSlide();
 
-	@Test
-	// Achieves 100% statement coverage
-	void testIsShopOpen_vip_open() {
-		// act
-		boolean result = testee.isShopOpen(LocalTime.of(9, 00), true);
+    @Test
+        // Achieves 100% statement coverage
+    void testIsShopOpen_vip_open() {
+        // act
+        boolean result = testee.isShopOpen(LocalTime.of(9, 00), true);
 
-		// assert
-		assertThat(result, is(true));
-	}
+        // assert
+        assertThat(result).isTrue();
+    }
 }

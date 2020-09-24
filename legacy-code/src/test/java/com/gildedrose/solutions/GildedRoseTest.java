@@ -3,9 +3,8 @@ package com.gildedrose.solutions;
 import com.gildedrose.Item;
 import org.junit.jupiter.api.Test;
 
-import static org.hamcrest.CoreMatchers.equalTo;
-import static org.hamcrest.CoreMatchers.is;
-import static org.hamcrest.MatcherAssert.assertThat;
+import static org.assertj.core.api.Assertions.assertThat;
+
 
 class GildedRoseTest {
 
@@ -18,9 +17,9 @@ class GildedRoseTest {
         //act
         testee.updateQuality();
         //assert
-        assertThat("name", testee.items[0].name, is(equalTo("A Standard Item")));
-        assertThat("sell in", testee.items[0].sellIn, is(equalTo(-2)));
-        assertThat("quality", testee.items[0].quality, is(equalTo(8)));
+        assertThat(testee.items[0].name).as("name").isEqualTo("A Standard Item");
+        assertThat(testee.items[0].sellIn).as("sell in").isEqualTo(-2);
+        assertThat(testee.items[0].quality).as("quality").isEqualTo(8);
     }
 
     @Test
@@ -30,8 +29,8 @@ class GildedRoseTest {
         //act
         testee.updateQuality();
         //assert
-        assertThat("sell in", testee.items[0].sellIn, is(equalTo(-2)));
-        assertThat("quality", testee.items[0].quality, is(equalTo(0)));
+        assertThat(testee.items[0].sellIn).as("sell in").isEqualTo(-2);
+        assertThat(testee.items[0].quality).as("quality").isEqualTo(0);
     }
 
     @Test
@@ -41,9 +40,9 @@ class GildedRoseTest {
         //act
         testee.updateQuality();
         //assert
-        assertThat("name", testee.items[0].name, is(equalTo(GildedRose.AGED_BRIE)));
-        assertThat("sell in", testee.items[0].sellIn, is(equalTo(4)));
-        assertThat("quality", testee.items[0].quality, is(equalTo(2)));
+        assertThat(testee.items[0].name).as("name").isEqualTo(GildedRose.AGED_BRIE);
+        assertThat(testee.items[0].sellIn).as("sell in").isEqualTo(4);
+        assertThat(testee.items[0].quality).as("quality").isEqualTo(2);
     }
 
     @Test
@@ -53,8 +52,8 @@ class GildedRoseTest {
         //act
         testee.updateQuality();
         //assert
-        assertThat("sell in", testee.items[0].sellIn, is(equalTo(4)));
-        assertThat("quality", testee.items[0].quality, is(equalTo(50)));
+        assertThat(testee.items[0].sellIn).as("sell in").isEqualTo(4);
+        assertThat(testee.items[0].quality).as("quality").isEqualTo(50);
     }
 
     @Test
@@ -64,8 +63,8 @@ class GildedRoseTest {
         //act
         testee.updateQuality();
         //assert
-        assertThat("sell in", testee.items[0].sellIn, is(equalTo(-2)));
-        assertThat("quality", testee.items[0].quality, is(equalTo(24)));
+        assertThat(testee.items[0].sellIn).as("sell in").isEqualTo(-2);
+        assertThat(testee.items[0].quality).as("quality").isEqualTo(24);
     }
 
     @Test
@@ -75,8 +74,8 @@ class GildedRoseTest {
         //act
         testee.updateQuality();
         //assert
-        assertThat("sell in", testee.items[0].sellIn, is(equalTo(-2)));
-        assertThat("quality", testee.items[0].quality, is(equalTo(50)));
+        assertThat(testee.items[0].sellIn).as("sell in").isEqualTo(-2);
+        assertThat(testee.items[0].quality).as("quality").isEqualTo(50);
     }
 
     @Test
@@ -86,8 +85,8 @@ class GildedRoseTest {
         //act
         testee.updateQuality();
         //assert
-        assertThat("sell in", testee.items[0].sellIn, is(equalTo(5)));
-        assertThat("quality", testee.items[0].quality, is(equalTo(80)));
+        assertThat(testee.items[0].sellIn).as("sell in").isEqualTo(5);
+        assertThat(testee.items[0].quality).as("quality").isEqualTo(80);
     }
 
     @Test
@@ -97,8 +96,8 @@ class GildedRoseTest {
         //act
         testee.updateQuality();
         //assert
-        assertThat("sell in", testee.items[0].sellIn, is(equalTo(-1)));
-        assertThat("quality", testee.items[0].quality, is(equalTo(22)));
+        assertThat(testee.items[0].sellIn).as("sell in").isEqualTo(-1);
+        assertThat(testee.items[0].quality).as("quality").isEqualTo(22);
     }
 
     @Test
@@ -108,8 +107,8 @@ class GildedRoseTest {
         //act
         testee.updateQuality();
         //assert
-        assertThat("sell in", testee.items[0].sellIn, is(equalTo(11)));
-        assertThat("quality", testee.items[0].quality, is(equalTo(23)));
+        assertThat(testee.items[0].sellIn).as("sell in").isEqualTo(11);
+        assertThat(testee.items[0].quality).as("quality").isEqualTo(23);
     }
 
     @Test
@@ -119,8 +118,8 @@ class GildedRoseTest {
         //act
         testee.updateQuality();
         //assert
-        assertThat("sell in", testee.items[0].sellIn, is(equalTo(9)));
-        assertThat("quality", testee.items[0].quality, is(equalTo(24)));
+        assertThat(testee.items[0].sellIn).as("sell in").isEqualTo(9);
+        assertThat(testee.items[0].quality).as("quality").isEqualTo(24);
     }
 
     @Test
@@ -130,8 +129,8 @@ class GildedRoseTest {
         //act
         testee.updateQuality();
         //assert
-        assertThat("sell in", testee.items[0].sellIn, is(equalTo(9)));
-        assertThat("quality", testee.items[0].quality, is(equalTo(50)));
+        assertThat(testee.items[0].sellIn).as("sell in").isEqualTo(9);
+        assertThat(testee.items[0].quality).as("quality").isEqualTo(50);
     }
 
     @Test
@@ -141,8 +140,8 @@ class GildedRoseTest {
         //act
         testee.updateQuality();
         //assert
-        assertThat("sell in", testee.items[0].sellIn, is(equalTo(4)));
-        assertThat("quality", testee.items[0].quality, is(equalTo(25)));
+        assertThat(testee.items[0].sellIn).as("sell in").isEqualTo(4);
+        assertThat(testee.items[0].quality).as("quality").isEqualTo(25);
     }
 
     @Test
@@ -152,8 +151,8 @@ class GildedRoseTest {
         //act
         testee.updateQuality();
         //assert
-        assertThat("sell in", testee.items[0].sellIn, is(equalTo(4)));
-        assertThat("quality", testee.items[0].quality, is(equalTo(50)));
+        assertThat(testee.items[0].sellIn).as("sell in").isEqualTo(4);
+        assertThat(testee.items[0].quality).as("quality").isEqualTo(50);
     }
 
     @Test
@@ -163,8 +162,8 @@ class GildedRoseTest {
         //act
         testee.updateQuality();
         //assert
-        assertThat("sell in", testee.items[0].sellIn, is(equalTo(-1)));
-        assertThat("quality", testee.items[0].quality, is(equalTo(0)));
+        assertThat(testee.items[0].sellIn).as("sell in").isEqualTo(-1);
+        assertThat(testee.items[0].quality).as("quality").isEqualTo(0);
     }
 
     @Test
@@ -174,8 +173,8 @@ class GildedRoseTest {
         //act
         testee.updateQuality();
         //assert
-        assertThat("sell in", testee.items[0].sellIn, is(equalTo(5)));
-        assertThat("quality", testee.items[0].quality, is(equalTo(20)));
+        assertThat(testee.items[0].sellIn).as("sell in").isEqualTo(5);
+        assertThat(testee.items[0].quality).as("quality").isEqualTo(20);
     }
 
     private void createTestee(String name, int sellIn, int quality) {
