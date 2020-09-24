@@ -1,6 +1,5 @@
-package com.gildedrose.solutions;
+package com.gildedrose;
 
-import com.gildedrose.Item;
 import org.junit.jupiter.api.Test;
 
 import java.io.IOException;
