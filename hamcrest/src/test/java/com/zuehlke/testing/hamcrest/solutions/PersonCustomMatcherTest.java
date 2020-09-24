@@ -23,7 +23,7 @@ class PersonCustomMatcherTest {
     }
 
     private Matcher<Person> hasFirstName(String expected) {
-        return new TypeSafeDiagnosingMatcher<Person>() {
+        return new TypeSafeDiagnosingMatcher<>() {
 
             @Override
             public void describeTo(Description description) {
@@ -39,7 +39,7 @@ class PersonCustomMatcherTest {
     }
 
     private Matcher<Person> hasLastName(String expected) {
-        return new FeatureMatcher<Person, String>(equalTo(expected), "lastName", "lastName") {
+        return new FeatureMatcher<>(equalTo(expected), "lastName", "lastName") {
 
             @Override
             protected String featureValueOf(Person actual) {
