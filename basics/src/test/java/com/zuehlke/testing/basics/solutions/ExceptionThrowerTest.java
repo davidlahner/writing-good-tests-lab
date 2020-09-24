@@ -11,7 +11,7 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 
 class ExceptionThrowerTest {
 
-    private ExceptionThrower testee = new ExceptionThrower();
+    private final ExceptionThrower testee = new ExceptionThrower();
 
     @Test
     void testThrowRuntimeException_illegalParameter_illegalArgumentMessage() {
@@ -34,10 +34,10 @@ class ExceptionThrowerTest {
     }
 
     @Test
-    void testThrowExceptionWithCause_expectCauseType() throws Exception {
+    void testThrowExceptionWithCause_expectCauseType() {
         // act
         RuntimeException exception = assertThrows(RuntimeException.class,
-                () -> testee.throwExceptionWithCause());
+                testee::throwExceptionWithCause);
 
         //assert
         assertThat(exception.getMessage(), is(equalTo("outer exception")));
@@ -45,10 +45,10 @@ class ExceptionThrowerTest {
     }
 
     @Test
-    void testThrowExceptionWithCause_expectCauseWithMessage() throws Exception {
+    void testThrowExceptionWithCause_expectCauseWithMessage() {
         // act
         RuntimeException exception = assertThrows(RuntimeException.class,
-                () -> testee.throwExceptionWithCause());
+                testee::throwExceptionWithCause);
 
         //assert
         assertThat(exception.getMessage(), is(equalTo("outer exception")));
