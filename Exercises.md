@@ -47,11 +47,6 @@ Executed Tests can be seen in the console or here:
 ....\organising-tests\build\test-results\test
 ```
 
-## Design for Testability
-Project: [design-for-testability](design-for-testability)
-
-Use the techniques discussed in this presentation to refactor the ```com.zuehlke.testing.exercise.Mailbox``` class
-
 ## Code Coverage
 Project: [code-coverage](code-coverage)
 
