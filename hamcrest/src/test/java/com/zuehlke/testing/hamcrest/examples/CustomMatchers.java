@@ -12,7 +12,7 @@ import static org.hamcrest.Matchers.equalTo;
 public class CustomMatchers {
 
     public static Matcher<Person> hasAge(final int i) {
-        return new TypeSafeDiagnosingMatcher<Person>() {
+        return new TypeSafeDiagnosingMatcher<>() {
             @Override
             public void describeTo(final Description description) {
                 description.appendText("getNumber should return ") //
@@ -30,7 +30,7 @@ public class CustomMatchers {
     }
 
     public static Matcher<Person> hasAgeFeatureMatcher(final Integer i) {
-        return new FeatureMatcher<Person, Integer>( //
+        return new FeatureMatcher<>( //
                 equalTo(i), "age to be", "age") {
             @Override
             protected Integer featureValueOf(final Person actual) {
