@@ -18,7 +18,7 @@ public class AnnotationExample {
     private ArgumentCaptor<String> arg;
 
     @BeforeEach
-    public void initMocks() {
+    public void init() {
         MockitoAnnotations.openMocks(this);
     }
 
