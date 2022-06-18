@@ -7,16 +7,16 @@ import java.util.Set;
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.MatcherAssert.assertThat;
-import static org.hamcrest.Matchers.contains;
+import static org.hamcrest.Matchers.containsInAnyOrder;
 
 public class MatcherTest {
-    private Set<String> set = Set.of("Hello", "World", "Test");
-    private Set<String> set2 = Set.of("Hello", "World", "Test");
+    private final Set<String> set = Set.of("Hello", "World", "Test");
+    private final Set<String> set2 = Set.of("Hello", "World", "Test");
 
     @Test
     void testSet() {
 
-        assertThat(set, contains("Hello", "Test", "World"));
+        assertThat(set, containsInAnyOrder("Hello", "Test", "World"));
         assertThat(set, is(equalTo(set2)));
     }
 }
