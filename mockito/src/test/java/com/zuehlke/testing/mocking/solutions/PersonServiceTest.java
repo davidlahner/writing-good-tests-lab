@@ -4,10 +4,11 @@ import com.zuehlke.testing.mocking.person.Person;
 import com.zuehlke.testing.mocking.person.PersonDao;
 import com.zuehlke.testing.mocking.person.PersonService;
 import org.hamcrest.Matchers;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.InjectMocks;
 import org.mockito.Mock;
-import org.mockito.MockitoAnnotations;
+import org.mockito.junit.jupiter.MockitoExtension;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -19,17 +20,13 @@ import static org.mockito.AdditionalMatchers.lt;
 import static org.mockito.ArgumentMatchers.anyInt;
 import static org.mockito.Mockito.*;
 
+@ExtendWith(MockitoExtension.class)
 class PersonServiceTest {
 
     @Mock
     private PersonDao mock;
+    @InjectMocks
     private PersonService testee;
-
-    @BeforeEach
-    void initMocks() {
-        MockitoAnnotations.openMocks(this);
-        testee = new PersonService(mock);
-    }
 
     // Exercise RETURN-VALUE
     @Test
