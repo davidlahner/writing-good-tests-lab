@@ -1,0 +1,30 @@
+configurations {
+    zestFuzzerCli
+}
+
+tasks.register('jqfFuzz', JavaExec) {
+    dependsOn classes
+    main = "edu.berkeley.cs.jqf.fuzz.ei.ZestCLI"
+    classpath = configurations.zestFuzzerCli
+    systemProperty("janala.verbose", "true")
+    systemProperty("janala.excludes", "java.,edu.")
+    args("--output", "$buildDir/fuzz/$name")
+    args("--duration", "10s")
+    // This passes the application classes location and the required jars separated with : or ;
+    args((configurations.testRuntimeClasspath + sourceSets.main.output + sourceSets.test.output).asPath)
+    // to be configured dynamically
+    args("com.zuehlke.testing.fuzzing.example.BuggyCodeTest", "testDivision")
+}
+
+dependencies {
+    zestFuzzerCli('edu.berkeley.cs.jqf:jqf-fuzz:1.9')
+    zestFuzzerCli("org.slf4j:slf4j-api:2.0.3")
+    zestFuzzerCli("org.slf4j:slf4j-simple:2.0.3")
+
+    implementation('com.pholser:junit-quickcheck-core:1.0')
+    implementation('com.pholser:junit-quickcheck-generators:1.0')
+    implementation('info.picocli:picocli:4.6.3')
+    implementation("org.jacoco:org.jacoco.report:0.8.8")
+
+    testImplementation('edu.berkeley.cs.jqf:jqf-fuzz:1.9')
+}
