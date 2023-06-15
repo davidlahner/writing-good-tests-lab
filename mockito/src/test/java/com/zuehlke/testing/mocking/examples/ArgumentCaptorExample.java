@@ -35,6 +35,6 @@ public class ArgumentCaptorExample {
         testee.addDocument("Another Document", new byte[]{1, 2, 3, 4, 5});
         // assert
         Mockito.verify(listener).documentAdded(
-                argThat(argument -> argument.startsWith("Another2")));
+                argThat(argument -> argument.startsWith("Another")));
     }
 }
