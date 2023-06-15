@@ -1,0 +1,10 @@
+plugins {
+    id 'info.solidsoft.pitest' version '1.9.0'
+}
+
+pitest {
+    targetClasses.add('com.gildedrose.solutions.*')
+    //adds dependency to org.pitest:pitest-junit5-plugin and sets "testPlugin" to "junit5"
+    junit5PluginVersion = '1.1.1'
+    pitestVersion = '1.10.3'
+}
