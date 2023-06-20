@@ -4,16 +4,17 @@ import static org.hamcrest.MatcherAssert.*;
 import static org.hamcrest.Matchers.*;
 
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 
-public class SpyExample {
+class SpyExample {
 
 	@Test
 	public void whenSpyingOnList_thenCorrect() {
-		List<String> list = new ArrayList<String>();
+		List<String> list = new LinkedList<>();
 		List<String> spyList = Mockito.spy(list);
 
 		spyList.add("one");
@@ -27,7 +28,7 @@ public class SpyExample {
 
 	@Test
 	public void whenStubASpy_thenStubbed() {
-		List<String> list = new ArrayList<String>();
+		List<String> list = new ArrayList<>();
 		List<String> spyList = Mockito.spy(list);
 
 		assertThat(spyList, hasSize(0));
