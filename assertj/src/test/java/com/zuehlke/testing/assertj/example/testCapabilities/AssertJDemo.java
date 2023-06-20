@@ -312,20 +312,16 @@ class AssertJDemo implements PersonTestHabits, ExplosivesTestHabits {
     class ExceptionAssertions {
 
         @Test
-        void asserts_exceptions() {
+        void asserts_exception_with_expectation_style() {
             // given:
             Bomb theBomb = Bomb.create().armed();
 
-            // when:
-            BombExploded thrown = catchThrowableOfType(theBomb::shake, BombExploded.class);
-
-            assertThat(thrown)
-                    .isNotNull() // Awkward!
+            // expect:
+            assertThatThrownBy(theBomb::shake)
                     .hasMessage("Boom!")
-                    .hasCauseInstanceOf(OxyhydrogenExplosion.class);
+                    .hasCauseInstanceOf(OxyhydrogenExplosion.class)
+                    .is(havingExplosives("Oxyhydrogen"));
 
-            // Unfortunately, the ThrowableAssertions object looses the exact type information.
-            assertThat(thrown.explosives()).as("Explosives").isEqualTo("Oxyhydrogen");
         }
 
         @Test
@@ -342,19 +338,6 @@ class AssertJDemo implements PersonTestHabits, ExplosivesTestHabits {
                     .hasMessage("Boom!")
                     .hasCauseInstanceOf(OxyhydrogenExplosion.class)
                     .is(havingExplosives("Oxyhydrogen"));
-        }
-
-        @Test
-        void asserts_exception_with_expectation_style() {
-            // given:
-            Bomb theBomb = Bomb.create().armed();
-
-            // expect:
-            assertThatThrownBy(theBomb::shake)
-                    .hasMessage("Boom!")
-                    .hasCauseInstanceOf(OxyhydrogenExplosion.class)
-                    .is(havingExplosives("Oxyhydrogen"));
-
         }
 
         @Test
