@@ -4,15 +4,16 @@ import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-public class SpyExample {
+class SpyExample {
 
     @Test
     public void whenSpyingOnList_thenCorrect() {
-        List<String> list = new ArrayList<String>();
+        List<String> list = new LinkedList<>();
         List<String> spyList = Mockito.spy(list);
 
         spyList.add("one");
