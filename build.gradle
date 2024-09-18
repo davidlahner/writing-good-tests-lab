@@ -1,5 +1,5 @@
 ext.junit4Version = '4.13.1'
-ext.junit5Version = '5.9.3'
+ext.junit5Version = '5.11.0'
 
 subprojects {
     apply plugin: "idea"
@@ -31,9 +31,9 @@ subprojects {
         //testRuntimeOnly("org.junit.vintage:junit-vintage-engine")
 
         //workaround because JUnit 4 is also a dependency. Without JUnit 4 use org.hamcrest:hamcrest:2.2
-        testImplementation 'org.hamcrest:hamcrest-core:2.2'
+        testImplementation 'org.hamcrest:hamcrest-core:3.0'
 
-        testImplementation 'org.assertj:assertj-core:3.23.1'
+        testImplementation 'org.assertj:assertj-core:3.26.3'
     }
 
     sourceCompatibility = 1.11
