@@ -1,3 +1,2 @@
 dependencies {
-    testRuntimeOnly("org.junit.vintage:junit-vintage-engine")
 }
