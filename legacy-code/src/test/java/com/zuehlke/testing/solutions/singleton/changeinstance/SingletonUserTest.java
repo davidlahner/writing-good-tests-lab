@@ -1,10 +1,9 @@
 package com.zuehlke.testing.solutions.singleton.changeinstance;
 
-import static org.hamcrest.MatcherAssert.*;
-import static org.hamcrest.Matchers.*;
-
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+
+import static org.assertj.core.api.Assertions.assertThat;
 
 public class SingletonUserTest {
 	private LazySingleton lazy = new LazySingleton();
@@ -23,8 +22,8 @@ public class SingletonUserTest {
 		// act
 		testee.doSomething();
 		// assert
-		assertThat(LazySingleton.getInstance().getCounter(), is(equalTo(1)));
-		assertThat(EagerSingleton.getInstance().getCounter(), is(equalTo(1)));
+		assertThat(LazySingleton.getInstance().getCounter()).isEqualTo(1);
+		assertThat(EagerSingleton.getInstance().getCounter()).isEqualTo(1);
 	}
 
 	@Test
@@ -34,7 +33,7 @@ public class SingletonUserTest {
 		// act
 		testee.doSomething();
 		// assert
-		assertThat(LazySingleton.getInstance().getCounter(), is(equalTo(1)));
-		assertThat(EagerSingleton.getInstance().getCounter(), is(equalTo(1)));
+		assertThat(LazySingleton.getInstance().getCounter()).isEqualTo(1);
+		assertThat(EagerSingleton.getInstance().getCounter()).isEqualTo(1);
 	}
 }

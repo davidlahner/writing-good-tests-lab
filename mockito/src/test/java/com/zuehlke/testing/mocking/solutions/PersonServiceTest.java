@@ -3,7 +3,6 @@ package com.zuehlke.testing.mocking.solutions;
 import com.zuehlke.testing.mocking.person.Person;
 import com.zuehlke.testing.mocking.person.PersonDao;
 import com.zuehlke.testing.mocking.person.PersonService;
-import org.hamcrest.Matchers;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
@@ -13,8 +12,7 @@ import org.mockito.junit.jupiter.MockitoExtension;
 import java.util.ArrayList;
 import java.util.List;
 
-import static org.hamcrest.MatcherAssert.assertThat;
-import static org.hamcrest.Matchers.*;
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.mockito.AdditionalMatchers.lt;
 import static org.mockito.ArgumentMatchers.anyInt;
@@ -39,7 +37,7 @@ class PersonServiceTest {
         Person result = testee.findById(1);
 
         // assert
-        assertThat(result, is(equalTo(person)));
+        assertThat(result).isEqualTo(person);
         verify(mock).findById(1);
     }
 
@@ -54,7 +52,7 @@ class PersonServiceTest {
         Person result = testee.findById(2);
 
         // assert
-        assertThat(result, is(nullValue()));
+        assertThat(result).isNull();
         verify(mock).findById(2);
     }
 
@@ -81,7 +79,7 @@ class PersonServiceTest {
 
         // act
         assertThrows(IllegalArgumentException.class, () -> testee.findById(-1));
-        assertThat(testee.findById(1), is(nullValue()));
+        assertThat(testee.findById(1)).isNull();
     }
 
     // Exercise METHOD-CALLED
@@ -99,7 +97,7 @@ class PersonServiceTest {
         List<Person> result = testee.findAll();
 
         // assert
-        assertThat(result, Matchers.contains(person1, person2));
+        assertThat(result).containsExactly(person1, person2);
         verify(mock).findAll();
     }
 

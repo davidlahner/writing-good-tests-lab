@@ -1,12 +1,12 @@
 package com.zuehlke.testing.testdoubles.solution;
 
-import static org.hamcrest.Matchers.*;
-import static org.hamcrest.MatcherAssert.*;
 
 import org.junit.jupiter.api.Test;
 
 import com.zuehlke.testing.testdoubles.exercise.Telephone;
 import com.zuehlke.testing.testdoubles.exercise.VoiceMailService;
+
+import static org.assertj.core.api.Assertions.assertThat;
 
 public class TelephoneTest {
 
@@ -23,7 +23,7 @@ public class TelephoneTest {
 		testee.call(NUMBER);
 
 		// assert
-		assertThat(spy.callingNumber, is(equalTo(NUMBER)));
+		assertThat(spy.callingNumber).isEqualTo(NUMBER);
 
 	}
 }

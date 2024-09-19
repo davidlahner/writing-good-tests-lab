@@ -6,9 +6,7 @@ import org.mockito.Mockito;
 import org.mockito.MockitoAnnotations;
 import org.mockito.Spy;
 
-import static org.hamcrest.MatcherAssert.assertThat;
-import static org.hamcrest.Matchers.is;
-import static org.hamcrest.Matchers.notNullValue;
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.Mockito.verify;
 
 public class DummySpyField {
@@ -30,7 +28,7 @@ public class DummySpyField {
         String name = model.getSubModel().getName();
 
         // assert
-        assertThat(name, is(notNullValue()));
+        assertThat(name).isNotNull();
         verify(sub).getName();
     }
 

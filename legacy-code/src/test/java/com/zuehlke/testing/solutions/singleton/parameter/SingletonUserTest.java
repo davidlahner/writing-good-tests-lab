@@ -1,13 +1,9 @@
 package com.zuehlke.testing.solutions.singleton.parameter;
 
-import static org.hamcrest.MatcherAssert.*;
-import static org.hamcrest.Matchers.*;
 
 import org.junit.jupiter.api.Test;
 
-import com.zuehlke.testing.solutions.singleton.parameter.EagerSingleton;
-import com.zuehlke.testing.solutions.singleton.parameter.LazySingleton;
-import com.zuehlke.testing.solutions.singleton.parameter.SingletonUser;
+import static org.assertj.core.api.Assertions.assertThat;
 
 public class SingletonUserTest {
 
@@ -21,8 +17,8 @@ public class SingletonUserTest {
 		// act
 		testee.doSomething();
 		// assert
-		assertThat(lazy.getCounter(), is(equalTo(1)));
-		assertThat(eager.getCounter(), is(equalTo(1)));
+		assertThat(lazy.getCounter()).isEqualTo(1);
+		assertThat(eager.getCounter()).isEqualTo(1);
 	}
 
 	@Test
@@ -32,7 +28,7 @@ public class SingletonUserTest {
 		// act
 		testee.doSomething();
 		// assert
-		assertThat(lazy.getCounter(), is(equalTo(1)));
-		assertThat(eager.getCounter(), is(equalTo(1)));
+		assertThat(lazy.getCounter()).isEqualTo(1);
+		assertThat(eager.getCounter()).isEqualTo(1);
 	}
 }
