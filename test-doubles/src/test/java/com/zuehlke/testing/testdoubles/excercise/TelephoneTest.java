@@ -19,7 +19,7 @@ public class TelephoneTest {
 		// testee.call(NUMBER);
 
 		// assert
-		// assertThat(spy.callingNumber, is(equalTo(NUMBER)));
+		// assertThat(spy.callingNumber).isEqualTo(NUMBER);
 
 	}
 }
