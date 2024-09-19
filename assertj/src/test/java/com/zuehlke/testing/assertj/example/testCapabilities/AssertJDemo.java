@@ -7,10 +7,8 @@ import com.zuehlke.testing.assertj.example.domain.explosives.Bomb;
 import com.zuehlke.testing.assertj.example.domain.explosives.BombExploded;
 import com.zuehlke.testing.assertj.example.domain.explosives.OxyhydrogenExplosion;
 import com.zuehlke.testing.assertj.example.domain.people.Person;
-import com.zuehlke.testing.assertj.example.testCapabilities.assertj.assertions.EventTestHabits;
 import com.zuehlke.testing.assertj.example.testCapabilities.assertj.assertions.ExplosivesTestHabits;
 import com.zuehlke.testing.assertj.example.testCapabilities.assertj.assertions.PersonTestHabits;
-import com.zuehlke.testing.assertj.example.testCapabilities.assertj.hamcrest.HamcrestMatcherHabits;
 import org.assertj.core.api.SoftAssertions;
 import org.assertj.core.api.junit.jupiter.SoftAssertionsExtension;
 import org.junit.jupiter.api.Nested;
@@ -27,9 +25,6 @@ import static java.util.Arrays.asList;
 import static org.assertj.core.api.Assertions.*;
 import static org.assertj.core.api.BDDAssertions.then;
 import static org.junit.jupiter.api.Assertions.*;
-import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.verify;
-import static org.mockito.hamcrest.MockitoHamcrest.argThat;
 
 
 class AssertJDemo implements PersonTestHabits, ExplosivesTestHabits {
@@ -280,6 +275,7 @@ class AssertJDemo implements PersonTestHabits, ExplosivesTestHabits {
         }
     }
 
+    @Nested
     @ExtendWith(SoftAssertionsExtension.class)
     class TheSoftAssertions {
 
@@ -350,27 +346,6 @@ class AssertJDemo implements PersonTestHabits, ExplosivesTestHabits {
 
             // Better use JUnit5
             assertDoesNotThrow(theBomb::shake);
-        }
-    }
-
-    @Nested
-    class MockitoIntegration implements HamcrestMatcherHabits, EventTestHabits {
-
-        @Test
-        void parameter_assertions() {
-            // setup:
-            EventBus theEventBus = mock(EventBus.class);
-
-            // when:
-            theEventBus.send(new SomethingGoodHappened());
-
-            // then:
-            verify(theEventBus).send(argThat(is(eventOfType(SomethingGoodHappened.class))));
-
-            verify(theEventBus).send(argThat(satisfies(
-                    event -> assertThat(event).isInstanceOfSatisfying(SomethingGoodHappened.class,
-                            the -> assertThat(the.good()).isEqualTo("AssertJ rocks!"))
-            )));
         }
 
     }

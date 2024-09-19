@@ -1,12 +1,12 @@
 package com.zuehlke.testing.rules.examples;
 
-import static org.hamcrest.Matchers.*;
-import static org.hamcrest.MatcherAssert.*;
 
 import org.junit.jupiter.api.Test;
 
 import com.zuehlke.testing.rules.Person;
 import com.zuehlke.testing.rules.PersonDao;
+
+import static org.assertj.core.api.Assertions.assertThat;
 
 class IntegrationTestExample {
 
@@ -21,7 +21,7 @@ class IntegrationTestExample {
 			// act
 			Person person = dao.find(expected.getName());
 			// assert
-			assertThat(person.getName(), is(equalTo(expected.getName())));
+			assertThat(person.getName()).isEqualTo(expected.getName());
 		} finally {
 			// cleanup
 			dao.delete(expected);

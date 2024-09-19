@@ -1,14 +1,13 @@
 package com.zuehlke.testing.mocking.examples;
 
-import static org.hamcrest.MatcherAssert.*;
-import static org.hamcrest.Matchers.*;
-
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
+
+import static org.assertj.core.api.Assertions.assertThat;
 
 class SpyExample {
 
@@ -23,7 +22,7 @@ class SpyExample {
 		Mockito.verify(spyList).add("one");
 		Mockito.verify(spyList).add("two");
 
-		assertThat(spyList, hasSize(2));
+		assertThat(spyList).hasSize(2);
 	}
 
 	@Test
@@ -31,9 +30,9 @@ class SpyExample {
 		List<String> list = new ArrayList<>();
 		List<String> spyList = Mockito.spy(list);
 
-		assertThat(spyList, hasSize(0));
+		assertThat(spyList).hasSize(0);
 
 		Mockito.when(spyList.size()).thenReturn(100);
-		assertThat(spyList, hasSize(100));
+		assertThat(spyList).hasSize(100);
 	}
 }

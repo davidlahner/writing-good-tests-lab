@@ -5,9 +5,7 @@ import com.zuehlke.testing.rules.PersonDao;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 
-import static org.hamcrest.CoreMatchers.is;
-import static org.hamcrest.MatcherAssert.assertThat;
-import static org.hamcrest.Matchers.equalTo;
+import static org.assertj.core.api.Assertions.assertThat;
 
 @ExtendWith(PersonResourceExtension.class)
 class IntegrationTestWithExtension {
@@ -21,6 +19,6 @@ class IntegrationTestWithExtension {
         // act
         Person result = dao.find(expected.getName());
         // assert
-        assertThat(result.getName(), is(equalTo(expected.getName())));
+        assertThat(result.getName()).isEqualTo(expected.getName());
     }
 }

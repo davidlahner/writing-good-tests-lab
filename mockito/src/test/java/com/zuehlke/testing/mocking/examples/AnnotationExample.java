@@ -6,8 +6,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.*;
 
-import static org.hamcrest.MatcherAssert.assertThat;
-import static org.hamcrest.Matchers.startsWith;
+import static org.assertj.core.api.Assertions.assertThat;
 
 public class AnnotationExample {
 
@@ -31,6 +30,6 @@ public class AnnotationExample {
         testee.addDocument("Another Document", new byte[]{1, 2, 3, 4, 5});
         // assert
         Mockito.verify(listener).documentAdded(arg.capture());
-        assertThat(arg.getValue(), startsWith("Another"));
+        assertThat(arg.getValue()).startsWith("Another");
     }
 }

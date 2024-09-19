@@ -5,8 +5,7 @@ import org.junit.jupiter.api.Test;
 
 import java.time.Duration;
 
-import static org.hamcrest.MatcherAssert.assertThat;
-import static org.hamcrest.Matchers.equalTo;
+import static org.assertj.core.api.Assertions.assertThat;
 
 class StaticCallExtractedTest {
 
@@ -26,7 +25,7 @@ class StaticCallExtractedTest {
         // act
         testCall.recordMessage();
         // assert
-        assertThat(testCall.getDuration(), equalTo(Duration.ofSeconds(15)));
+        assertThat(testCall.getDuration()).isEqualTo(Duration.ofSeconds(15));
     }
 
 }

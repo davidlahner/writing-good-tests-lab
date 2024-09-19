@@ -1,7 +1,6 @@
 package com.zuehlke.testing.mocking.examples.spy;
 
-import static org.hamcrest.Matchers.*;
-import static org.hamcrest.MatcherAssert.*;
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.Mockito.*;
 
 import org.junit.jupiter.api.BeforeEach;
@@ -16,7 +15,7 @@ public class DummySpyField {
 
 	@BeforeEach
 	public void initSpy() {
-		MockitoAnnotations.initMocks(this);
+		MockitoAnnotations.openMocks(this);
 	}
 
 	@Test
@@ -29,7 +28,7 @@ public class DummySpyField {
 		String name = model.getSubModel().getName();
 
 		// assert
-		assertThat(name, is(notNullValue()));
+		assertThat(name).isNotNull();
 		verify(sub).getName();
 	}
 

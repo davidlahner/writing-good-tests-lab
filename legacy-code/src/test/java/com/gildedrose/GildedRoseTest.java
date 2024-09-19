@@ -2,9 +2,7 @@ package com.gildedrose;
 
 import org.junit.jupiter.api.Test;
 
-import static org.hamcrest.CoreMatchers.equalTo;
-import static org.hamcrest.CoreMatchers.is;
-import static org.hamcrest.MatcherAssert.assertThat;
+import static org.assertj.core.api.Assertions.assertThat;
 
 class GildedRoseTest {
 
@@ -17,9 +15,9 @@ class GildedRoseTest {
         //act
         testee.updateQuality();
         //assert
-        assertThat("name", testee.items[0].name, is(equalTo("A Standard Item")));
-        assertThat("sell in", testee.items[0].sellIn, is(equalTo(-2)));
-        assertThat("quality", testee.items[0].quality, is(equalTo(8)));
+        assertThat(testee.items[0].name).describedAs("name").isEqualTo("A Standard Item");
+        assertThat(testee.items[0].sellIn).describedAs("sell in").isEqualTo(-2);
+        assertThat(testee.items[0].quality).describedAs("quality").isEqualTo(8);
     }
 
     private void createTestee(String name, int sellIn, int quality) {

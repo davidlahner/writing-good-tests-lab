@@ -9,9 +9,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Stream;
 
-import static org.hamcrest.MatcherAssert.assertThat;
-import static org.hamcrest.Matchers.equalTo;
-import static org.hamcrest.Matchers.is;
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.params.provider.Arguments.arguments;
 
 class PrimeFactorTest {
@@ -22,7 +20,7 @@ class PrimeFactorTest {
         // act
         List<Integer> result = PrimeFactor.factorsOf(product);
         // arrange
-        assertThat(result, is(equalTo(factors)));
+        assertThat(result).isEqualTo(factors);
     }
 
     static Stream<Arguments> argumentsProvider() {

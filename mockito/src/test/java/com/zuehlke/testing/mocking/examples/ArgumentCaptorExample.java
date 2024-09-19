@@ -1,14 +1,13 @@
 package com.zuehlke.testing.mocking.examples;
 
-import static org.hamcrest.MatcherAssert.assertThat;
-import static org.hamcrest.Matchers.startsWith;
-
 import org.junit.jupiter.api.Test;
 import org.mockito.ArgumentCaptor;
 import org.mockito.Mockito;
 
 import com.zuehlke.testing.mocking.document.DocumentStore;
 import com.zuehlke.testing.mocking.document.StoreListener;
+
+import static org.assertj.core.api.Assertions.assertThat;
 
 public class ArgumentCaptorExample {
 
@@ -24,6 +23,6 @@ public class ArgumentCaptorExample {
 		// assert
 		ArgumentCaptor<String> arg = ArgumentCaptor.forClass(String.class);
 		Mockito.verify(listener).documentAdded(arg.capture());
-		assertThat(arg.getValue(), startsWith("Another"));
+		assertThat(arg.getValue()).startsWith("Another");
 	}
 }

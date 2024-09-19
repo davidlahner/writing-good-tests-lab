@@ -2,6 +2,8 @@ dependencies {
     implementation 'org.hibernate:hibernate-core:5.3.20.Final'
     implementation 'javax.xml.bind:jaxb-api:2.2.11'
 
+    testImplementation 'org.hamcrest:hamcrest-core:3.0'
+
     testImplementation("junit:junit:${junit4Version}")
     testRuntimeOnly("org.junit.vintage:junit-vintage-engine")
 }

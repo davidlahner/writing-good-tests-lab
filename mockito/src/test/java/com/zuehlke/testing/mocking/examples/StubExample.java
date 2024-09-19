@@ -1,13 +1,12 @@
 package com.zuehlke.testing.mocking.examples;
 
-import static org.hamcrest.MatcherAssert.*;
-import static org.hamcrest.Matchers.*;
-
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 
 import com.zuehlke.testing.mocking.document.DocumentStore;
 import com.zuehlke.testing.mocking.document.StoreListener;
+
+import static org.assertj.core.api.Assertions.assertThat;
 
 public class StubExample {
 
@@ -22,6 +21,6 @@ public class StubExample {
 		// act
 		testee.addDocument("New Document", new byte[0]);
 		// assert
-		assertThat(testee.isEmpty(), is(false));
+		assertThat(testee.isEmpty()).isFalse();
 	}
 }

@@ -1,11 +1,10 @@
 package com.zuehlke.testing.mocking.examples.spy;
 
-import static org.hamcrest.Matchers.*;
-import static org.hamcrest.MatcherAssert.*;
-
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
+
+import static org.assertj.core.api.Assertions.assertThat;
 
 @Disabled
 //TODO: remove @Disabled to run test
@@ -24,6 +23,6 @@ public class DummyMockRuntime {
 		String name = model.getSubModel().getName();
 
 		// assert
-		assertThat(name, is(notNullValue()));
+		assertThat(name).isNotNull();
 	}
 }
