@@ -1,9 +1,8 @@
 package com.zuehlke.testing.mocking.exercises;
 
+import com.zuehlke.testing.mocking.person.PersonService;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
-
-import com.zuehlke.testing.mocking.person.PersonService;
 
 public class PersonServiceTest {
 

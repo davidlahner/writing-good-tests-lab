@@ -1,10 +1,9 @@
 package com.zuehlke.testing.mocking.examples;
 
-import org.junit.jupiter.api.Test;
-import org.mockito.Mockito;
-
 import com.zuehlke.testing.mocking.document.DocumentStore;
 import com.zuehlke.testing.mocking.document.StoreListener;
+import org.junit.jupiter.api.Test;
+import org.mockito.Mockito;
 
 public class MockExample {
 

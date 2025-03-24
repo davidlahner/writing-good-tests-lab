@@ -1,13 +1,11 @@
 package com.zuehlke.testing.basics.example;
 
-import static org.hamcrest.MatcherAssert.*;
-import static org.hamcrest.Matchers.*;
+import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.Test;
+import static org.assertj.core.api.Assertions.assertThat;
 
 public class ShoppingBasketTest {
 
@@ -21,7 +19,7 @@ public class ShoppingBasketTest {
 		int count = testee.getItemCount();
 
 		// then
-		assertThat("Basket is empty", count, is(equalTo(0)));
+		assertThat(count).isEqualTo(0);
 	}
 
 	@Test
@@ -33,7 +31,7 @@ public class ShoppingBasketTest {
 		int count = testee.getItemCount();
 
 		// assert
-		assertThat("Basket contains item", count, is(equalTo(1)));
+		assertThat(count).isEqualTo(1);
 	}
 
 	private class ShoppingBasket {

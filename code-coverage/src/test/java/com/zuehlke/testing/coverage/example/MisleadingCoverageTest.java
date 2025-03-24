@@ -3,8 +3,6 @@ package com.zuehlke.testing.coverage.example;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
-import com.zuehlke.testing.coverage.example.MisleadingCoverage;
-
 @Disabled
 //TODO: remove @Disabled to run test
 class MisleadingCoverageTest {

@@ -1,12 +1,12 @@
 package com.zuehlke.testing.basics.example;
 
-import static org.hamcrest.MatcherAssert.*;
-import static org.hamcrest.Matchers.*;
+import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import org.junit.jupiter.api.Test;
+import static org.assertj.core.api.Assertions.assertThat;
+
 
 public class ShoppingBasket2Test {
 
@@ -20,7 +20,7 @@ public class ShoppingBasket2Test {
 		int count = shoppingBasket.getItemCount();
 
 		// then
-		assertThat("Basket is empty", count, is(equalTo(0)));
+		assertThat(count).isEqualTo(0);
 	}
 
 	@Test
@@ -30,7 +30,7 @@ public class ShoppingBasket2Test {
 
 		// act
 		// assert
-		assertThat(shoppingBasket.getItemCount(), is(equalTo(1)));
+		assertThat(shoppingBasket.getItemCount()).isEqualTo(1);
 	}
 
 	private class ShoppingBasket {

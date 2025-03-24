@@ -1,12 +1,11 @@
 package com.zuehlke.testing.mocking.examples;
 
-import static org.mockito.ArgumentMatchers.*;
-
+import com.zuehlke.testing.mocking.document.DocumentStore;
+import com.zuehlke.testing.mocking.document.StoreListener;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 
-import com.zuehlke.testing.mocking.document.DocumentStore;
-import com.zuehlke.testing.mocking.document.StoreListener;
+import static org.mockito.ArgumentMatchers.anyString;
 
 public class RelaxedVerificationExample {
 

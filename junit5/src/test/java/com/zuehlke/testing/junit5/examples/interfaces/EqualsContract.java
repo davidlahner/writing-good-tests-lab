@@ -2,7 +2,8 @@ package com.zuehlke.testing.junit5.examples.interfaces;
 
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotEquals;
 
 public interface EqualsContract<T>  extends Testable<T> {
     T createNotEqualValue();

@@ -1,10 +1,9 @@
 package com.zuehlke.testing.testdoubles.solution;
 
 
-import org.junit.jupiter.api.Test;
-
 import com.zuehlke.testing.testdoubles.exercise.Telephone;
 import com.zuehlke.testing.testdoubles.exercise.VoiceMailService;
+import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
