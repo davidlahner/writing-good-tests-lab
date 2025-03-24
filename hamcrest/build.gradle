@@ -1,3 +1,0 @@
-dependencies {
-    testImplementation 'org.hamcrest:hamcrest-core:3.0'
-}

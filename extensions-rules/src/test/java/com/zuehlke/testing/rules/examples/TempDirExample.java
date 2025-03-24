@@ -7,8 +7,7 @@ import java.io.File;
 import java.io.IOException;
 import java.nio.file.Path;
 
-import static org.hamcrest.CoreMatchers.equalTo;
-import static org.hamcrest.MatcherAssert.assertThat;
+import static org.assertj.core.api.Assertions.assertThat;
 
 class TempDirExample {
 
@@ -20,6 +19,6 @@ class TempDirExample {
         logFile.createNewFile();
 
         //assert
-        assertThat(logFile.canRead(), equalTo(true));
+        assertThat(logFile.canRead()).isTrue();
     }
 }

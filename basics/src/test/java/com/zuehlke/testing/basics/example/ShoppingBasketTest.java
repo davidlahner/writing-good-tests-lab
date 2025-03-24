@@ -5,9 +5,7 @@ import org.junit.jupiter.api.Test;
 import java.util.ArrayList;
 import java.util.List;
 
-import static org.hamcrest.MatcherAssert.assertThat;
-import static org.hamcrest.Matchers.equalTo;
-import static org.hamcrest.Matchers.is;
+import static org.assertj.core.api.Assertions.assertThat;
 
 public class ShoppingBasketTest {
 
@@ -21,7 +19,7 @@ public class ShoppingBasketTest {
         int count = testee.getItemCount();
 
         // then
-        assertThat("Basket is empty", count, is(equalTo(0)));
+        assertThat(count).isEqualTo(0);
     }
 
     @Test
@@ -33,7 +31,7 @@ public class ShoppingBasketTest {
         int count = testee.getItemCount();
 
         // assert
-        assertThat("Basket contains item", count, is(equalTo(1)));
+        assertThat(count).isEqualTo(1);
     }
 
     private static class ShoppingBasket {

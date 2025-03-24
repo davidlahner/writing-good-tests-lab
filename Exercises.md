@@ -7,14 +7,8 @@ Project: [basics](basics)
 * Write a Test for ```ExceptionThrower.throwExceptionWithCause()```. 
   * Verify the chained (cause) exception.
 
-## Hamcrest Matchers
-Project: [hamcrest](hamcrest)
-1. Write a Test for ```com.zuehlke.testing.hamcrest.Person``` using Hamcrest Matchers to verify all the fields. 
-2. Open ```com.zuehlke.testing.hamcrest.exercises.CollectionTest``` and write the asserts that are described in the comments
-3. Implement a TypeSafeDiagnosingMatcher for first name and a FeatureMatcher for last name and use them to test ```com.zuehlke.testing.hamcrest.Person```.
-
 ## AssertJ
-Project: [assertJ](hamcrest)
+Project: [assertJ](assertj)
 1. Write a Test for ```com.zuehlke.testing.assertj.example.domain.people.Person``` using AssertJ to verify all the fields. 
 2. Open ```com.zuehlke.testing.assertj.exercises.CollectionTest``` and write the asserts that are described in the comments
 3. Implement a Custom Condition for first name and one for last name and use them to test ```com.zuehlke.testing.assertj.example.domain.people.Person```.
