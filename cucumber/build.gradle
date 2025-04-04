@@ -1,0 +1,24 @@
+dependencies {
+    testImplementation 'io.cucumber:cucumber-java:6.10.4'
+}
+
+configurations {
+    cucumberRuntime {
+        extendsFrom testImplementation
+    }
+}
+
+tasks.register('cucumberCli') {
+    dependsOn assemble, testClasses
+    doLast {
+        javaexec {
+            mainClass = "io.cucumber.core.cli.Main"
+            classpath = configurations.cucumberRuntime + sourceSets.main.output + sourceSets.test.output
+            args = [
+                    '--plugin', 'pretty',
+                    '--plugin', 'html:target/cucumber-report.html',
+                    '--glue', 'com.baeldung.cucumber',
+                    'src/test/resources']
+        }
+    }
+}
