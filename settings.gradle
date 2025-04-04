@@ -1,4 +1,5 @@
 include 'basics',
+        'cucumber',
         'mockito',
         'assertj',
         'extensions-rules',
