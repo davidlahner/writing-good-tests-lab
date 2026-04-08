@@ -1,5 +1,5 @@
-ext.junit4Version = '4.13.1'
-ext.junit5Version = '5.11.0'
+ext.junit4Version = '4.13.2'
+ext.junitVersion = '6.0.3'
 
 subprojects {
     apply plugin: "idea"
@@ -20,20 +20,24 @@ subprojects {
     }
 
     dependencies {
-        //import a BOM to ensure that compatible versions of the JUnit 5 library are used
-        implementation platform("org.junit:junit-bom:${junit5Version}")
+        //import a BOM to ensure that compatible versions of the JUnit 6 library are used
+        implementation platform("org.junit:junit-bom:${junitVersion}")
 
         // JUnit Jupiter API and TestEngine implementation
         testImplementation("org.junit.jupiter:junit-jupiter")
+        testRuntimeOnly("org.junit.platform:junit-platform-launcher")
 
         // If you also want to support JUnit 3 and JUnit 4 tests
-        //testImplementation("junit:junit:${junit4Version}")
+        testImplementation("junit:junit:${junit4Version}")
         //testRuntimeOnly("org.junit.vintage:junit-vintage-engine")
 
-        testImplementation 'org.assertj:assertj-core:3.26.3'
+        testImplementation 'org.assertj:assertj-core:3.27.7'
     }
 
-    sourceCompatibility = 1.11
-    targetCompatibility = 1.11
+    java {
+        toolchain {
+            languageVersion = JavaLanguageVersion.of(25)
+        }
+    }
 
 }
