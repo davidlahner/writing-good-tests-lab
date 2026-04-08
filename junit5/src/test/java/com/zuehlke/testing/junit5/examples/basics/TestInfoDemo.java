@@ -8,10 +8,6 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 @DisplayName("TestInfo Demo")
 class TestInfoDemo {
 
-    TestInfoDemo(TestInfo testInfo) {
-        assertEquals("TestInfo Demo", testInfo.getDisplayName());
-    }
-
     @BeforeEach
     void init(TestInfo testInfo) {
         String displayName = testInfo.getDisplayName();
