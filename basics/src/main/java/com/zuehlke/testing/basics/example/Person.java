@@ -1,7 +1,7 @@
 package com.zuehlke.testing.basics.example;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
 
 @Entity
 public class Person {
