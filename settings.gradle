@@ -9,5 +9,5 @@ include 'basics',
         'code-coverage',
         'test-doubles',
         'legacy-code',
-        'junit5',
+        'junit',
         'fuzzing'
