@@ -92,8 +92,8 @@ To write Unit Tests without dependencies to or a running database, ```PersonDao`
  
 Hint: Use ```anyInt()``` as placeholder for ```findById()```.
 
-## JUnit
-Project: [junit](junit)
+## JUnit 5
+Project: [junit5](junit5)
 
 1. Write a Test that fails if a timeout occurs
 2. Create ```HashCodeContract``` with relevant methods and tests and use it in ```StringTests```
