@@ -30,4 +30,8 @@ public class DocumentStore {
 	public void addListener(StoreListener listener) {
 		listeners.add(listener);
 	}
+
+	public static String getVersion() {
+		return "v5";
+	}
 }
