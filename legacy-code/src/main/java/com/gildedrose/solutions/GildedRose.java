@@ -8,7 +8,7 @@ class GildedRose {
         SULFURAS_HAND_OF_RAGNAROS,
         BACKSTAGE_PASSES,
         CONJURED_ITEM,
-        OTHER_ITEM;
+        OTHER_ITEM
     }
 
     private static final int MAXIMUM_QUALITY = 50;
@@ -94,15 +94,11 @@ class GildedRose {
         if (name.startsWith("Conjured")) {
             return Product.CONJURED_ITEM;
         }
-        switch (name) {
-            case AGED_BRIE:
-                return Product.AGED_BRIE;
-            case SULFURAS_HAND_OF_RAGNAROS:
-                return Product.SULFURAS_HAND_OF_RAGNAROS;
-            case BACKSTAGE_PASSES:
-                return Product.BACKSTAGE_PASSES;
-            default:
-                return Product.OTHER_ITEM;
-        }
+        return switch (name) {
+            case AGED_BRIE -> Product.AGED_BRIE;
+            case SULFURAS_HAND_OF_RAGNAROS -> Product.SULFURAS_HAND_OF_RAGNAROS;
+            case BACKSTAGE_PASSES -> Product.BACKSTAGE_PASSES;
+            default -> Product.OTHER_ITEM;
+        };
     }
 }
